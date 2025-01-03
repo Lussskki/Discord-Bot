@@ -2,7 +2,7 @@
 
 ## **Overview**
 
-This is a **Work-In-Progress (WIP)** Discord bot project. The bot provides tutorials and error handling related to Node.js topics. The project is actively being developed, and new features and improvements will be added over time.
+This is a **Work-In-Progress (WIP)** Discord bot template project. The bot provides tutorials and error handling related to Node.js topics. The project is actively being developed, and new features and improvements will be added over time.
 
 ## **Features**
 
@@ -32,7 +32,7 @@ This is a **Work-In-Progress (WIP)** Discord bot project. The bot provides tutor
 
 To add new commands, update the `tutorialMap.js` or `errorMap.js` files. Add the question as a key and the response as a value in the respective map. Restart the server to apply changes.
 
-```
+```javascript
 const tutorialMap = {
   'how to create a new project': () => [
     '1. Create a new directory:',
@@ -43,6 +43,17 @@ const tutorialMap = {
 }
 
 ```
+
+## **How to add slashCommands / **
+
+To add new slash commands, update `slashCommand.js` and `index.js` files. Add slashes for more functionality. 
+
+# In src/shlasCommand.js
+Replace text in  `setName('ping')` and add new code: 
+```javascript 
+new SlashCommandBuilder().setName('ping').setDescription('Replies with Answer') 
+``` 
+in map. In index write Title what you want name to execute in discord.
 
 ### **Contributing**
 
