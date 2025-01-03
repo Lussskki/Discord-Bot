@@ -3,6 +3,7 @@ import { Routes } from 'discord-api-types/v9'
 import { SlashCommandBuilder } from '@discordjs/builders'
 
 // Define slash commands
+// Add your SlashCommandBuilder to set
 export const commands = [
   new SlashCommandBuilder().setName('ping').setDescription('Replies with Answer'),
   new SlashCommandBuilder().setName('hell').setDescription('Replies with Answer')
