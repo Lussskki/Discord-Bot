@@ -27,7 +27,7 @@ client.on('interactionCreate', async interaction => {
 
   const { commandName } = interaction
 
-  // Handle commands
+  // Slash commands handle 
   if (commandName === 'ping') {
     await interaction.reply('Gamovida')
   } else if (commandName === 'hell') {
