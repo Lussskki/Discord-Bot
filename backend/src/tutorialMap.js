@@ -1,20 +1,24 @@
-const tutorialMap = {
-    'how can i start a server in node.js?': () => {
+const tutorialMap = {    'გამარჯობა, შენ ვინ ხარ': () => {
+  return [
+          'მე ბოტი ვარ, მასტერს ვემსახურები უბრალოდ. ახლა ჩემზე მუშაობა მიმდინარეობს, მალე შედეგსაც იხილავ.'
+  ]
+},
+    'დამეხმარე ნოუდის სერვერის აწყობა მინდა': () => {
       return [
-        '### Step 1: Create a new project\n' +
-        '1. **Create a new directory and navigate into it:**\n' +
+        '### ეტაპი 1: შექმენი ახალი პროექტი\n' +
+        '1. **შექმენი ახალი დირექტორია და გადადი მასში**\n' +
         '   ```bash\n' +
         '   mkdir project\n' +
         '   cd project\n' +
         '   ```\n' +
-        '2. **Initialize the project:**\n' +
+        '2. **დააინიციალიზაციე პროექტი:**\n' +
         '   ```bash\n' +
         '   npm init -y\n' +
         '   ```\n' +
-        '   This will generate a `package.json` file.',
+        '   ეს დააგენერირებს `package.json` ფაილს.',
   
-        '### Step 2: Start a server in Node.js\n' +
-        '1. **Using HTTP module:**\n' +
+        '### ეტაპი 2: შექმენი სერვერი Node.js-ში\n' +
+        '1. **გამოიყენე HTTP მოდული:**\n' +
         '   ```javascript\n' +
         '   const http = require("http");\n' +
         '   const server = http.createServer((req, res) => {\n' +
@@ -23,47 +27,24 @@ const tutorialMap = {
         '   });\n' +
         '   server.listen(3000, () => console.log("Server running at http://localhost:3000"));\n' +
         '   ```',
-        '2. **Using Express framework:**\n' +
+        '2. **ექსპრესის ფრეიმვორკით ხელმძღვანელობა:**\n' +
         '   ```javascript\n' +
         '   import express from "express";\n' +
         '   const app = express();\n' +
         '   app.get("/", (req, res) => res.send("Hello World"));\n' +
         '   app.listen(3000, () => console.log("Server running at http://localhost:3000"));\n' +
-        '   ```',
-        '3. **Using Koa framework:**\n' +
-        '   ```javascript\n' +
-        '   const Koa = require("koa");\n' +
-        '   const app = new Koa();\n' +
-        '   app.use(async ctx => {\n' +
-        '     ctx.body = "Hello World";\n' +
-        '   });\n' +
-        '   app.listen(3000, () => console.log("Server running at http://localhost:3000"));\n' +
-        '   ```',
-        'Each method has its own use case. HTTP is basic and doesn’t require extra dependencies, Express is a robust framework with many built-in features, and Koa is a lightweight alternative to Express with a modern approach to middleware.'
+        '   ```'
       ]
     },
 
-    'what web framework should i install and how to create a project?': () => {
+    'რა ვებ ფრეიმვორკი უნდა დავაინსტალირო, რომ შევქმნა პროექტი?': () => {
       return [
-        '1. **Installing Express framework:**\n' +
-        '   - Run the following command to install Express:\n' +
+        '1. **ექსპრესის ინსტალაციის დროს:**\n' +
+        '   - გაუშვი ეს კოდი რომ დააინსტალირო express:\n' +
         '   ```bash\n' +
         '   npm install express\n' +
         '   ```\n' +
-        '   - Create a new `server.js` file and start the server as shown earlier with Express.',
-        '2. **Installing Koa framework:**\n' +
-        '   - Install Koa with the following command:\n' +
-        '   ```bash\n' +
-        '   npm install koa\n' +
-        '   ```\n' +
-        '   - Then, create a `server.js` and set up your server like the example shown above.',
-        '3. **Creating a new Node.js project:**\n' +
-        '   - Initialize a new Node.js project using the following command:\n' +
-        '   ```bash\n' +
-        '   npm init -y\n' +
-        '   ```\n' +
-        '   - This will generate a `package.json` file where you can manage your dependencies.\n' +
-        '   - After that, you can install any web framework (like Express or Koa) and start creating your project.'
+        '   - შექმენი  `server.js` ფაილი და დასტრატე სერვერი.'
       ]
     }
   }
