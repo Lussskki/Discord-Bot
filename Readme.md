@@ -2,10 +2,10 @@
 
 ## **Overview**
 
-This is a **Work-In-Progress (WIP)** Personal Discord bot project. The bot provides tutorials and error handling related to Node.js topics. The project is actively being developed, and new features and improvements will be added over time.
+This is a **Work-In-Progress (WIP)** Personal Discord bot template project. You can fork this and use for you. The project is actively being developed, and new features and improvements will be added over time.
 
 ## **Features**
-
+- **Clean code for client to use.**
 - **Responds to Node.js tutorial-related questions.**
 - **Provides error handling solutions.**
 - **Built using Node.js and Discord.js.**
@@ -24,17 +24,21 @@ This is a **Work-In-Progress (WIP)** Personal Discord bot project. The bot provi
    cd project
    pnpm i
    pnpm dev
-2. Create .env file in the root directory and add discord token
+   ```
+2. Create .env file in the root directory and add this 
    ```bash
    DISCORD_TOKEN=your-bot-token 
+   CLIENT_ID=your-client-id
+   GUILD_ID=your-guild-id
+   ```
 
-## **How to add commands**
+## **How to add slash commands**
 
-To add new commands, update the `tutorialMap.js` or `errorMap.js` files. Add the question as a key and the response as a value in the respective map. Restart the server to apply changes.
+To add new commands, update the `tutorialMap.js` or `errorMap.js` files. Add the phrases as a key and the response as a value in the respective map. Restart the server to apply changes.
 
 ```javascript
 const tutorialMap = {
-  'how to create a new project': () => [
+  sayHello : () => [
     '1. Create a new directory:',
     '   ```bash\n   mkdir project-name\n   cd project-name\n   ```',
     '2. Initialize the project with npm or pnpm:',
@@ -43,11 +47,6 @@ const tutorialMap = {
 }
 
 ```
-
-## **How to add slashCommands /** 
-
-To add new slash commands, update `slashCommand.js` and `index.js` files. Add slashes for more functionality. 
-
 ## In src/slashCommand.js
 Replace text in  `setName('ping')` and add new code: 
 ```javascript 
