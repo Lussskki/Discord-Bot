@@ -1,8 +1,8 @@
 import { Client, GatewayIntentBits } from 'discord.js'
 
-import tutorialMap from './tutorialMap.js'
-import errorMap from './errorMap.js'
-import { registerSlashCommands } from './slashCommand.js'
+import tutorialMap from './slashCommands/tutorialMap.js'
+import errorMap from './slashCommands/errorMap.js'
+import { registerSlashCommands } from './slashCommands/slashCommand.js'
 import dotenv from 'dotenv'
 
 dotenv.config() // Load environment variables from .env file
@@ -15,59 +15,36 @@ const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
 })
 
+// For log in 
 client.once('ready', async () => {
   console.log(`Logged in as ${client.user.tag}!`)
 
   // Register slash commands
   await registerSlashCommands(clientId, guildId, token)
 })
-
+// Slash command handler
 client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return
 
   const { commandName } = interaction
 
-  // Slash commands handle 
-  if (commandName === 'ping') {
-    await interaction.reply('Gamovida')
-  } else if (commandName === 'hell') {
-    await interaction.reply('It\'s working!!')
+  console.log('command: ', commandName)
+
+  // Check which map contains the command
+  const getAnswer = tutorialMap[commandName] || errorMap[commandName]
+
+  if (typeof getAnswer === 'function') {
+    // Get the response and join it into a single string
+    const answer = getAnswer().join('\n')
+
+    console.log('answer: ', answer)
+    // Send the answer as a reply
+    await interaction.reply(answer)
   } else {
-    await interaction.reply('Unknown command!')
+    // Handle cases where the command doesn't exist
+    console.log('Command not found')
+    await interaction.reply('Sorry, I don’t know how to respond to that command.')
   }
-})
-
-
-// Message-based command handling
-client.on('messageCreate', message => {
-  if (message.author.bot) return
-
-  const question = message.content.toLowerCase().trim()
-  
-  // Fetch responses
-  const answer = tutorialMap[question] && tutorialMap[question]()
-  const errorResponse = errorMap[question] && errorMap[question]()
-
-  // Respond to errors first
-  if (errorResponse) {
-    if (Array.isArray(errorResponse)) {
-      return message.reply(errorResponse.join('\n\n'))
-    } else {
-      return message.reply('Sorry, something went wrong. The error message format is incorrect.')
-    }
-  }
-
-  // Respond to tutorial queries
-  if (answer) {
-    if (Array.isArray(answer)) {
-      return message.reply(answer.join('\n\n'))
-    } else {
-      return message.reply('Sorry, something went wrong. The answer format is incorrect.')
-    }
-  }
-
-  // Default response for unrecognized questions
-  message.reply('Sorry, I don’t recognize that question. Please ask about Node.js topics or errors.')
 })
 
 // Use your environment variable for the bot token
