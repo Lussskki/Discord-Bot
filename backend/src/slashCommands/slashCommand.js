@@ -11,7 +11,9 @@ import errorMap from './errorMap.js'
 
 export const commands = [
   new SlashCommandBuilder().setName('sayhello').setDescription('Replies with Answer'),
-  new SlashCommandBuilder().setName('error').setDescription('Replies with Answer')
+  new SlashCommandBuilder().setName('error').setDescription('Replies with Answer'),
+  new SlashCommandBuilder().setName('createnodeapp').setDescription('Replies with Answer'),
+  new SlashCommandBuilder().setName('createnoderoute').setDescription('Replies with Answer')
   
 ].map(command => {
   const commandName = command.name
