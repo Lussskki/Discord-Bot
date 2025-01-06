@@ -5,6 +5,7 @@ import errorMap from './slashCommands/errorMap.js'
 import { registerSlashCommands } from './slashCommands/slashCommand.js'
 
 import dotenv from 'dotenv'
+import http from 'http'
 
 dotenv.config() // Load environment variables from .env file
 
@@ -16,9 +17,20 @@ const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
 })
 
+// For port handling in render.com
+const PORT = process.env.PORT || 3000
+
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' })
+  res.end('Bot is running!\n')
+}).listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`)
+})
+
 // For log in 
 client.once('ready', async () => {
   console.log(`Logged in as ${client.user.tag}!`)
+  console.log(`Bot is online!`)
 
   // Register slash commands
   await registerSlashCommands(clientId, guildId, token)
