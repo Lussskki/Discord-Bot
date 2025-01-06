@@ -29,7 +29,7 @@ client.on('interactionCreate', async interaction => {
 
   const { commandName } = interaction
 
-  console.log('command: ', commandName)
+  //console.log('command: ', commandName)
 
   // Check which map contains the command
   const getAnswer = nodeMap[commandName] || errorMap[commandName]
@@ -38,7 +38,7 @@ client.on('interactionCreate', async interaction => {
     // Get the response and join it into a single string
     const answer = getAnswer().join('\n')
 
-    console.log('answer: ', answer)
+    //console.log('answer: ', answer)
     // Send the answer as a reply
     await interaction.reply(answer)
   } else {
