@@ -1,8 +1,9 @@
 import { Client, GatewayIntentBits } from 'discord.js'
 
-import tutorialMap from './slashCommands/tutorialMap.js'
+import nodeMap from './slashCommands/nodeMap.js'
 import errorMap from './slashCommands/errorMap.js'
 import { registerSlashCommands } from './slashCommands/slashCommand.js'
+
 import dotenv from 'dotenv'
 
 dotenv.config() // Load environment variables from .env file
@@ -31,7 +32,7 @@ client.on('interactionCreate', async interaction => {
   console.log('command: ', commandName)
 
   // Check which map contains the command
-  const getAnswer = tutorialMap[commandName] || errorMap[commandName]
+  const getAnswer = nodeMap[commandName] || errorMap[commandName]
 
   if (typeof getAnswer === 'function') {
     // Get the response and join it into a single string
