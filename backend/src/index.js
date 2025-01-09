@@ -4,10 +4,12 @@ import nodeMap from './slashCommands/nodeMap.js'
 import errorMap from './slashCommands/errorMap.js'
 import { registerSlashCommands } from './slashCommands/slashCommand.js'
 
-import dotenv from 'dotenv'
+import {config} from './config.js'
 import http from 'http'
 
-dotenv.config() // Load environment variables from .env file
+// console.log('Bot Token:', config.token,
+//             'Guild_id:', config.guild_id,
+//             'Client_id:', config.clientId ) // Load environment variables from .env file
 
 const clientId = process.env.CLIENT_ID
 const guildId = process.env.GUILD_ID
@@ -52,8 +54,8 @@ client.on('interactionCreate', async interaction => {
 
     //console.log('answer: ', answer)
     // Send the answer as a reply
-    await interaction.reply(answer)
-  } else {
+    await interaction.reply(answer) 
+  } else { 
     // Handle cases where the command doesn't exist
     console.log('Command not found')
     await interaction.reply('Sorry, I don’t know how to respond to that command.')
